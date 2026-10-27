@@ -6,7 +6,7 @@ Round-dot type, dot charts, backlight halos, flow dots and an orbit map, on one 
 </p>
 
 <p align="center">
-<a href="https://dongkunxu.github.io/netatlas-kit/"><b>Live demo</b></a>
+<a href="https://glimmer-x.github.io/netatlas-kit/"><b>Live demo</b></a>
 &nbsp;·&nbsp; <a href="#quick-start">Quick start</a>
 &nbsp;·&nbsp; <a href="#whats-inside">What's inside</a>
 </p>
@@ -92,16 +92,16 @@ Changed digits morph dot by dot instead of redrawing.
 ## Quick start
 
 ```sh
-git clone https://github.com/DongkunXu/netatlas-kit.git
+git clone https://github.com/Glimmer-X/netatlas-kit.git
 cd netatlas-kit
 npm install
 npm run dev        # the demo page at http://127.0.0.1:5190
 ```
 
-The same page is online at **[dongkunxu.github.io/netatlas-kit](https://dongkunxu.github.io/netatlas-kit/)**
+The same page is online at **[glimmer-x.github.io/netatlas-kit](https://glimmer-x.github.io/netatlas-kit/)**
 (hover a dot in the orbit, or a pill to show its ring alone; Auto / Light / Dark at the top right).
 
-In your own project, install it from GitHub (`npm install github:DongkunXu/netatlas-kit`) or copy
+In your own project, install it from GitHub (`npm install github:Glimmer-X/netatlas-kit`) or copy
 `src/` and `styles/`, then:
 
 ```ts

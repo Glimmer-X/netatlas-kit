@@ -5,9 +5,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DongkunXu/netatlas-kit.git"
+    "url": "git+https://github.com/Glimmer-X/netatlas-kit.git"
   },
-  "homepage": "https://github.com/DongkunXu/netatlas-kit#readme",
+  "homepage": "https://github.com/Glimmer-X/netatlas-kit#readme",
   "keywords": [
     "dashboard",
     "design-system",
