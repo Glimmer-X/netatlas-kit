@@ -10,7 +10,7 @@
 .x { all: unset; cursor: pointer; margin-left: auto; width: 38px; height: 38px; border-radius: 50%; background: var(--w2); display: grid; place-items: center; transition: background 0.2s; }
 .x:hover { background: var(--off); }
 .x svg { width: 16px; height: 16px; }
-.win-body { flex: 1; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 20px; scrollbar-width: thin; }
+.win-body { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 20px; scrollbar-width: thin; }
 .win .seg { background: var(--w2); height: 32px; display: inline-flex; align-self: flex-start; }
 .win .seg button { font-size: 12px; }
 .win .seg button .dt { font-size: 10px; }

@@ -7,8 +7,10 @@
 .t.a { background: var(--accent); color: var(--on-accent); }
 .t.o { border-radius: 50%; }
 .clk { cursor: pointer; }
-.clk:hover { transform: translateY(-2px); box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--ink) 11%, transparent), 0 14px 30px -16px rgba(0, 0, 0, 0.25); }
-.t.o.clk:hover { transform: translateY(-2px) scale(1.02); }
+@media (hover: hover) { /* touch screens skip the lift, which would stick after a tap */
+  .clk:hover { transform: translateY(-2px); box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--ink) 11%, transparent), 0 14px 30px -16px rgba(0, 0, 0, 0.25); }
+  .t.o.clk:hover { transform: translateY(-2px) scale(1.02); }
+}
 .pad { padding: 18px 20px; height: 100%; display: flex; flex-direction: column; }
 .t.s .cap, .t.sl .cap { color: var(--s-mute); }
 .center { margin: auto; }
