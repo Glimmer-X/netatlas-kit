@@ -211,7 +211,7 @@ function setTheme(v: string): void {
 const app = document.getElementById("app")!;
 app.innerHTML = `<header class="top"><div class="brand">${dt("NETATLAS KIT")}<span class="cap">A visual system for live dashboards</span></div>${themeSeg()}</header>
   ${boardHtml(cells)}${specimen()}
-  <footer class="cap">Everything on this page is made up. Source: src/ and styles/.</footer>`;
+  <footer class="cap">Everything on this page is made up. <a href="https://github.com/DongkunXu/netatlas-kit">Source and documentation on GitHub</a>.</footer>`;
 fillBoard();
 TONES.forEach((t, i) => {
   document.getElementById(`h-${t}`)!.innerHTML = round(`<div class="v">${dt(String([62, 80, 45, 30, 100][i]))}</div>`, t, "");

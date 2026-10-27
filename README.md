@@ -6,6 +6,12 @@ Round-dot type, dot charts, backlight halos, flow dots and an orbit map, on one 
 </p>
 
 <p align="center">
+<a href="https://dongkunxu.github.io/netatlas-kit/"><b>Live demo</b></a>
+&nbsp;·&nbsp; <a href="#quick-start">Quick start</a>
+&nbsp;·&nbsp; <a href="#whats-inside">What's inside</a>
+</p>
+
+<p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/board-dark.png">
   <img alt="A dashboard built with the kit: round tiles, an orbit map, dot charts and readouts" src="docs/board-light.png">
@@ -94,6 +100,9 @@ cd netatlas-kit
 npm install
 npm run dev        # the demo page at http://127.0.0.1:5190
 ```
+
+The same page is online at **[dongkunxu.github.io/netatlas-kit](https://dongkunxu.github.io/netatlas-kit/)**
+(hover a dot in the orbit, or a pill to show its ring alone; Auto / Light / Dark at the top right).
 
 In your own project, install it from GitHub (`npm install github:DongkunXu/netatlas-kit`) or copy
 `src/` and `styles/`, then:

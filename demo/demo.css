@@ -9,6 +9,7 @@ header.top { display: flex; align-items: center; justify-content: space-between;
 .brand { display: flex; align-items: baseline; gap: 16px; }
 .brand .dt { font-size: 22px; }
 footer { margin-top: 40px; }
+footer a { color: inherit; text-underline-offset: 3px; }
 
 /* big round reading */
 .big-round { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
