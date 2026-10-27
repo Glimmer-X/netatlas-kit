@@ -12,10 +12,7 @@ Round-dot type, dot charts, backlight halos, flow dots and an orbit map, on one 
 </p>
 
 <p align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/board-dark.png">
-  <img alt="A dashboard built with the kit: round tiles, an orbit map, dot charts and readouts" src="docs/board-light.png">
-</picture>
+<img alt="A dashboard built with the kit: round tiles, an orbit map, dot charts and readouts" src="docs/board.png">
 </p>
 
 <p align="center"><sub>Every tile above comes from the kit. The data is made up.</sub></p>
