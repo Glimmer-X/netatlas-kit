@@ -1,0 +1,43 @@
+/* Backlight halos: light from behind a round widget, visible just outside its edge.
+   The halo element shares the widget's grid cell and paints first, so the widget covers its inner part.
+   --f is the arc (0..1 from 12 o'clock, clockwise); --lv the brightness. */
+@property --f {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.halo {
+  position: relative;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  --c: var(--halo-light);
+  transition: opacity 0.6s ease, --f 0.9s var(--ease);
+}
+.halo.on { opacity: var(--lv, 1); }
+.halo[data-tone="blue"] { --c: var(--halo-blue); }
+.halo[data-tone="olive"] { --c: var(--halo-olive); }
+.halo[data-tone="rose"] { --c: var(--halo-rose); }
+.halo[data-tone="alert"] { --c: var(--halo-alert); }
+
+.halo i { position: absolute; border-radius: 50%; }
+.halo i::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--c) 0turn, var(--c) calc(var(--f) * 1turn - 0.012turn), transparent calc(var(--f) * 1turn + 0.02turn));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 11px), #000 calc(100% - 8px), #000 calc(100% - 3px), transparent 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 11px), #000 calc(100% - 8px), #000 calc(100% - 3px), transparent 100%);
+}
+/* soft glow spilling past the edge, and a tighter core right at the rim */
+.halo .hg { inset: -7px; filter: blur(6px); opacity: var(--halo-glow); }
+.halo .hc { inset: -4px; filter: blur(1.4px); opacity: var(--halo-core); }
+
+.halo.on[data-mode="breathe"] { animation: halo-breathe 3.4s ease-in-out infinite; }
+.halo[data-mode="spin"] i { animation: spin 8s linear infinite; }
+@keyframes halo-breathe {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}

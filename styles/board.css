@@ -1,0 +1,58 @@
+/* The board: a 12 x 7 grid of tiles (src/widgets.ts), round widgets and dot readouts.
+   --W is the design width, --g the gap, --u one grid unit. */
+.board { display: grid; gap: var(--g); grid-template-columns: repeat(12, var(--u)); grid-auto-rows: var(--u); }
+.t { background: var(--w); border-radius: 28px; position: relative; overflow: hidden; min-width: 0; transition: transform 0.22s var(--ease), box-shadow 0.22s, opacity 0.2s; }
+.t.s, .t.sl { background: var(--s); color: var(--on-s); }
+.t.s .mute, .t.sl .mute { color: var(--s-mute); }
+.t.a { background: var(--accent); color: var(--on-accent); }
+.t.o { border-radius: 50%; }
+.clk { cursor: pointer; }
+.clk:hover { transform: translateY(-2px); box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--ink) 11%, transparent), 0 14px 30px -16px rgba(0, 0, 0, 0.25); }
+.t.o.clk:hover { transform: translateY(-2px) scale(1.02); }
+.pad { padding: 18px 20px; height: 100%; display: flex; flex-direction: column; }
+.t.s .cap, .t.sl .cap { color: var(--s-mute); }
+.center { margin: auto; }
+.hd { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.hd .dt { font-size: 11px; }
+.hd .dt.lg { font-size: 18px; }
+.hd .cap { white-space: nowrap; }
+.hd .strong { font-size: 12px; }
+/* round widgets */
+.circ { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 2px; padding: 8px; position: relative; }
+.circ .v { font-size: 18px; margin-bottom: 9px; }
+.circ .n { font-size: 11.5px; font-weight: 500; line-height: 1.2; }
+.circ .d { font-size: 10px; color: var(--mute); line-height: 1.2; white-space: nowrap; }
+.t.s .circ .d { color: var(--s-mute); }
+.circ .warn, .circ .d.warn { color: var(--accent); }
+.lg-wrap { display: block; margin-bottom: 9px; line-height: 0; }
+.lg-wrap.warn { color: var(--accent); }
+.mk { display: inline-block; width: 7px; height: 7px; border-radius: 50%; vertical-align: 1px; margin-right: 5px; }
+.meter { display: flex; gap: 4px; }
+.meter i { width: 7px; height: 7px; border-radius: 50%; background: var(--off); display: block; }
+.meter i.on { background: var(--ink); }
+/* load bars under readings (src/widgets.ts loadBar) */
+.lvl { display: flex; gap: 2px; }
+.lvl i { width: 4px; height: 4px; border-radius: 50%; background: var(--off); display: block; transition: background 0.5s; }
+.lvl.blank { visibility: hidden; }
+.lvl[data-tone="low"] i.on { background: var(--lv-low); }
+.lvl[data-tone="mid"] i.on { background: var(--lv-mid); }
+.lvl[data-tone="high"] i.on { background: var(--lv-high); }
+/* dot charts (src/charts.ts) */
+svg.chart { width: 100%; height: auto; display: block; margin-top: auto; }
+.chart-note { font-size: 10.5px; fill: var(--s-mute); }
+/* flow lines (src/flow.ts): a dotted base, moving dots only with traffic */
+svg.flh { flex: 1; min-width: 18px; height: 8px; display: block; overflow: visible; }
+.fl-base { stroke: var(--s-off); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 0 4; }
+.fdot { fill: var(--accent); }
+.fg.blue .fdot { fill: var(--blue); }
+.fg.rose .fdot { fill: var(--accent); }
+.fg.ink .fdot { fill: var(--ink); }
+.fg.mute .fdot { fill: var(--mute); }
+/* dot bars and probes */
+.bar { display: flex; gap: 3px; }
+.bar i { width: 5px; height: 5px; border-radius: 50%; background: var(--s-off); display: block; }
+.bar i.on { background: var(--accent); }
+.pr { display: flex; gap: 2.5px; }
+.pr i { width: 4px; height: 4px; border-radius: 50%; background: var(--faint); display: block; }
+.pr i.lost { background: var(--accent); }
+.pr i.ok { background: var(--ink); }

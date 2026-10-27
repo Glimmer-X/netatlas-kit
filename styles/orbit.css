@@ -1,0 +1,61 @@
+/* The orbit (src/orbit.ts), drawn straight on the board. Rings are numbered from the inside:
+   r0 r1 r2; members carry m0 m1 m2 for the rings they are on; data-iso="n" shows ring n alone. */
+.orbit { position: relative; }
+.orbit svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.orbit-map .ring { fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 0 7; transition: opacity 0.35s, stroke-width 0.35s; }
+.orbit-map .ring.t-ink { stroke: var(--ink); opacity: 0.28; }
+.orbit-map .ring.t-blue { stroke: var(--blue); opacity: 0.75; }
+.orbit-map .ring.t-olive { stroke: var(--olive); opacity: 0.75; }
+.orbit-map .hit { fill: none; stroke: transparent; stroke-width: 10; pointer-events: stroke; cursor: pointer; }
+.orbit-map .spoke { stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; opacity: 0.5; transition: opacity 0.2s, stroke-width 0.2s; }
+.orbit-map .spoke.off { stroke-dasharray: 2 4; opacity: 0.35; }
+.orbit-map .relay { stroke: var(--blue); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 0 5; opacity: 0.55; }
+.orbit-map .direct { stroke: var(--blue); stroke-width: 1.2; opacity: 0.4; }
+.orbit-map .dev.on .relay, .orbit-map .dev.on .direct { opacity: 1; stroke-width: 2; }
+.orbit-map .c-ring { fill: none; stroke: var(--blue); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 0 4; opacity: 0.7; }
+.orbit-map .dv { fill: var(--ink); transition: r 0.18s; }
+.orbit-map .dv.hollow { fill: var(--board); stroke: var(--ink); stroke-width: 1.5; }
+.orbit-map .dev { cursor: pointer; transition: opacity 0.35s; }
+.orbit-map .dev .lb { font-size: 11.5px; font-weight: 500; fill: var(--ink); }
+.orbit-map .dev .lb2 { font-size: 10px; fill: var(--mute); transition: opacity 0.3s; pointer-events: none; }
+.orbit-map .dev .lb2.v-net { opacity: 0; }
+.orbit-map .dev.off .lb { fill: var(--mute); }
+.orbit-map .dev .hd-hit { fill: transparent; }
+.orbit-map .dev.on .spoke { opacity: 1; stroke-width: 2.6; }
+.orbit-map .dev.on .dv { r: 6.2; }
+.orbit-map .dev .rl { font-size: 9px; fill: var(--ink); opacity: 0; transition: opacity 0.35s; pointer-events: none; }
+.orbit-map .fdot { fill: var(--blue); }
+.orbit-map.focus .dev:not(.on) { opacity: 0.14; }
+.orbit-map[data-iso="0"] .dev:not(.m0), .orbit-map[data-iso="1"] .dev:not(.m1), .orbit-map[data-iso="2"] .dev:not(.m2) { opacity: 0.08; }
+.orbit-map[data-iso="0"] .ring:not(.r0), .orbit-map[data-iso="1"] .ring:not(.r1), .orbit-map[data-iso="2"] .ring:not(.r2) { opacity: 0.08; }
+.orbit-map[data-iso="0"] .pill:not(.p0), .orbit-map[data-iso="1"] .pill:not(.p1), .orbit-map[data-iso="2"] .pill:not(.p2) { opacity: 0.2; }
+.orbit-map[data-iso] .ring { stroke-width: 3.2; }
+.orbit-map[data-iso] .single-cap { opacity: 0; }
+.orbit-map[data-iso="0"] .dev .rl { opacity: 1; }
+.orbit-map[data-iso] .dev .v-def { opacity: 0; }
+.orbit-map[data-iso="0"] .dev .v0, .orbit-map[data-iso="1"] .dev .v1, .orbit-map[data-iso="2"] .dev .v2 { opacity: 1; }
+.orbit-map .single-cap { transition: opacity 0.35s; }
+.orbit-map .pill { cursor: pointer; transition: opacity 0.35s; }
+.orbit-map .pill rect { fill: var(--w); stroke: var(--faint); stroke-width: 1; }
+.orbit-map .pill .pc { fill: var(--ink); color: var(--ink); }
+.orbit-map .pill.alert rect { fill: var(--accent); stroke: none; }
+.orbit-map .pill.alert .pc { fill: var(--on-accent); color: var(--on-accent); }
+.orbit-map .pill .pn { font-weight: 500; font-size: 11px; }
+.orbit-map .selfspoke { stroke: var(--ink); stroke-width: 1.6; opacity: 0.55; }
+.orbit-map .selfspoke.bad { stroke: var(--accent); stroke-dasharray: 0 5; stroke-linecap: round; stroke-width: 2.2; opacity: 1; }
+.orbit-map .c-node { cursor: pointer; }
+.orbit-map .c-disc { fill: var(--s); transition: r 0.2s var(--ease); }
+.orbit-map .c-node:hover .c-disc { r: 38.5; }
+.orbit-map .c-t { fill: var(--on-s); }
+.orbit-map .c-t2 { fill: var(--s-mute); font-size: 9.5px; }
+/* the centre's own backlight: an arc, rose and breathing on alert */
+.orbit-map .c-halo circle { fill: none; stroke: var(--halo-light); stroke-linecap: round; }
+.orbit-map .c-halo .ch-glow { stroke-width: 7; filter: url(#o-glow); opacity: var(--halo-glow); }
+.orbit-map .c-halo .ch-core { stroke-width: 2; opacity: calc(var(--halo-core) * 0.8); }
+.orbit-map .c-halo.alert circle { stroke: var(--halo-alert); }
+.orbit-map .c-halo.alert { animation: halo-breathe 3.4s ease-in-out infinite; }
+.orbit-map .o-cap { font-size: 11px; fill: var(--mute); }
+.orbit-map .o-title { fill: var(--ink); }
+.orbit-map .lg text { font-size: 11px; fill: var(--mute); }
+.orbit-map .lg .dv:not(.hollow) { fill: var(--ink); }
+.orbit-map .lg .spoke, .orbit-map .lg .relay, .orbit-map .lg .direct { opacity: 0.8; }

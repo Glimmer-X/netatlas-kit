@@ -1,0 +1,67 @@
+/* Colour and size tokens. Light by default; dark follows the system unless the page sets
+   data-theme="light" or "dark" on <html>. Colours are named by role (board, widget, strong,
+   ink, accent) or by hue (blue, olive); the accent is kept for alerts and what needs a look. */
+:root {
+  --board: #e2e4e7;
+  --w: #ffffff; /* base widget */
+  --w2: #f1f2f4; /* inset surface on a base widget */
+  --s: #19191b; /* strong widget */
+  --on-s: #f4f4f5;
+  --s-mute: #8b8b91;
+  --s-off: #333337; /* unlit dot on a strong widget */
+  --ink: #111113;
+  --mute: #84878c;
+  --faint: #cdd0d4;
+  --off: #e4e6e9; /* unlit dot on a base widget */
+  --accent: #d5577c;
+  --on-accent: #ffffff;
+  --blue: #2c86bc;
+  --olive: #848b20;
+  /* load levels: low, middle, high */
+  --lv-low: #3e9a6c;
+  --lv-mid: #2c86bc;
+  --lv-high: #d5577c;
+  --ctl: #ffffff;
+  --scrim: rgba(28, 30, 34, 0.26);
+  --shadow: 0 30px 90px rgba(20, 22, 26, 0.22), 0 2px 8px rgba(20, 22, 26, 0.06);
+  /* backlight halos: soft coloured light on the grey board */
+  --halo-light: #ffffff;
+  --halo-blue: #3a95cf;
+  --halo-olive: #a3ab2a;
+  --halo-rose: #e0668b;
+  --halo-alert: #e0466f;
+  --halo-glow: 0.95;
+  --halo-core: 0.7;
+  --g: 12px;
+  --W: 1360px; /* design width; .wrap is zoomed to fit narrower windows */
+  --u: calc((var(--W) - 11 * var(--g)) / 12);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --sans: "Inter Variable", Inter, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --board: #000000; --w: #1a1a1c; --w2: #252528; --s: #ececee; --on-s: #121214;
+    --s-mute: #75757b; --s-off: #d3d3d7; --ink: #f2f2f3; --mute: #8c8f95; --faint: #3b3c41;
+    --off: #2a2b2f; --accent: #da6787; --on-accent: #ffffff; --blue: #3f94c8; --olive: #959933; --ctl: #1a1a1c;
+    --lv-low: #56b585; --lv-mid: #3f94c8; --lv-high: #da6787;
+    --scrim: rgba(0, 0, 0, 0.62); --shadow: 0 0 0 1px #2e2f33, 0 30px 90px rgba(0, 0, 0, 0.6);
+    --halo-light: #f6f6f2; --halo-blue: #58aee6; --halo-olive: #c3c84d; --halo-rose: #ef7fa0; --halo-alert: #f05a82;
+    --halo-glow: 1; --halo-core: 0.9;
+    color-scheme: dark;
+  }
+  :root:not([data-theme="light"]) .t.sl { --s: var(--w); --on-s: var(--ink); --s-mute: var(--mute); --s-off: var(--off); }
+}
+
+:root[data-theme="dark"] {
+  --board: #000000; --w: #1a1a1c; --w2: #252528; --s: #ececee; --on-s: #121214;
+  --s-mute: #75757b; --s-off: #d3d3d7; --ink: #f2f2f3; --mute: #8c8f95; --faint: #3b3c41;
+  --off: #2a2b2f; --accent: #da6787; --on-accent: #ffffff; --blue: #3f94c8; --olive: #959933; --ctl: #1a1a1c;
+  --lv-low: #56b585; --lv-mid: #3f94c8; --lv-high: #da6787;
+  --scrim: rgba(0, 0, 0, 0.62); --shadow: 0 0 0 1px #2e2f33, 0 30px 90px rgba(0, 0, 0, 0.6);
+  --halo-light: #f6f6f2; --halo-blue: #58aee6; --halo-olive: #c3c84d; --halo-rose: #ef7fa0; --halo-alert: #f05a82;
+  --halo-glow: 1; --halo-core: 0.9;
+  color-scheme: dark;
+}
+:root[data-theme="dark"] .t.sl { --s: var(--w); --on-s: var(--ink); --s-mute: var(--mute); --s-off: var(--off); }

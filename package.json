@@ -1,0 +1,39 @@
+{
+  "name": "netatlas-kit",
+  "version": "0.1.0",
+  "description": "A visual system for dense live dashboards: round-dot type, dot charts, backlight halos and an orbit map.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DongkunXu/netatlas-kit.git"
+  },
+  "homepage": "https://github.com/DongkunXu/netatlas-kit#readme",
+  "keywords": [
+    "dashboard",
+    "design-system",
+    "dot-matrix",
+    "svg",
+    "visualization",
+    "ui-kit"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles/*": "./styles/*"
+  },
+  "files": [
+    "src",
+    "styles",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}
