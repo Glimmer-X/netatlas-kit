@@ -1,7 +1,11 @@
 /* Windows: a large rounded panel over a blurred scrim, its header, close button, and the
    pieces inside (notes, big numbers, tables, SVG drawings). Every window lays itself out. */
-.scrim { position: fixed; inset: 0; z-index: 50; background: var(--scrim); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity 0.26s ease; }
-.scrim.on { opacity: 1; pointer-events: auto; }
+/* hidden outright once faded out: phone browsers tint their bars from a fixed layer at the edge */
+.scrim { position: fixed; inset: 0; z-index: 50; background: var(--scrim); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.26s ease, visibility 0s 0.26s; }
+.scrim.on { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 0.26s ease; }
+/* touches on the scrim or the window frame never scroll the page behind; the body scrolls itself */
+.scrim, .win { touch-action: none; }
+.win-body { touch-action: pan-x pan-y; }
 .win { position: fixed; z-index: 60; background: var(--w); color: var(--ink); border-radius: 36px; transform-origin: 0 0; box-shadow: var(--shadow); overflow: hidden; outline: none; display: flex; flex-direction: column; }
 .win-in { display: flex; flex-direction: column; flex: 1; min-height: 0; padding: 26px 30px 28px; }
 .win-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; flex: none; }
